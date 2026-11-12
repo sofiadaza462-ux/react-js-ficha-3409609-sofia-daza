@@ -4,6 +4,17 @@ const productos = [
   { nombre: "Monitor", precio: 450000, stock: 3 }
 ];
 
-productos.forEach((producto, indice) => { 
-  console.log(`${indice + 1}. ${producto.nombre} - $${producto.precio} - stock: ${producto.stock}`); 
+const nombresMayusculas = productos.map(producto => producto.nombre.toUpperCase());
+
+console.log("1. Nombres en Mayúsculas");
+console.log(nombresMayusculas);
+
+const productosConIva = productos.map(producto => {
+  return {
+    ...producto, 
+    precioConIva: Math.round(producto.precio * 1.19) 
+  };
 });
+
+console.log("\n2. Productos con Precio con IVA Incluido");
+console.log(productosConIva);

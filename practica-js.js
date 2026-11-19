@@ -3,17 +3,32 @@ const productos = [
   { id: 2, nombre: "Teclado", precio: 80000, categoria: "Tecnología", stock: 12 },
   { id: 3, nombre: "Monitor", precio: 450000, categoria: "Monitores", stock: 0 } // Stock en 0 para probar el filtro
 ];
-const productosDisponibles = productos.filter(producto => producto.stock > 0);
 
-console.log("1. Productos Disponibles (stock > 0) ");
-console.log(productosDisponibles);
+console.log(`\n--- 12.1 Template literals ---`);
+console.log(`El producto ${productos[0].nombre} cuesta $${productos[0].precio}`);
 
-const productosGranos = productos.filter(producto => producto.categoria === "Tecnología");
+console.log(`\n--- 12.2 Desestructuración ---`);
+const { nombre, precio, stock } = productos[0];
+console.log(nombre, precio, stock);
 
-console.log("\n2. Productos de la categoría 'Tecnología'");
-console.log(productosGranos);
+const productoActualizado = {
+  ...productos[0],
+  stock: 8
+};
 
-const productoBuscado = productos.find(producto => producto.id === 2);
+console.log(`\n--- 12.4 Operador ternario ---`);
+const estado = productoActualizado.stock > 0 ? 'Disponible' : 'Agotado';
+console.log(estado);
 
-console.log("\n3. Producto encontrado con ID 2");
-console.log(productoBuscado);
+console.log(`\n--- Tarea Reto 8 ---`);
+const copiaProducto = {
+  ...productos[2], 
+  precio: 420000,
+  stock: 4
+};
+
+console.log(
+  `El producto ${copiaProducto.nombre} ahora tiene un precio de $${copiaProducto.precio} y está ${copiaProducto.stock > 0 ? 'Disponible' : 'Agotado'}`
+);
+
+console.log('Original intacto:', productos[2]);
